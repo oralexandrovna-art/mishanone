@@ -340,6 +340,49 @@ height:86px; transform:translateY(-50%); pointer-events:none; overflow:visible}
   .video-orbit-moving {display:none}
   .video-orbit-still {display:inline}
 }
+
+@media (max-width:760px) {
+  #photo .photoGrid {
+    display:flex;
+    gap:0;
+    max-width:500px;
+    margin-inline:auto;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    overscroll-behavior-x:contain;
+    background:var(--ink);
+  }
+  #photo .photoGrid::-webkit-scrollbar {display:none}
+  #photo .studio-portraits {display:contents}
+  #photo .photoGrid img {
+    flex:0 0 100%;
+    min-width:0;
+    aspect-ratio:2 / 3;
+    max-height:70svh;
+    object-fit:contain;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+  .photo-controls:not([hidden]) {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    max-width:500px;
+    margin:10px auto 0;
+    font-variant-numeric:tabular-nums;
+  }
+  .photo-controls button {
+    min-height:44px;
+    min-width:44px;
+    padding:0 12px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    background:transparent;
+    color:var(--ink);
+  }
+}
 </style></head><body><div class="wrap"><header class="top"><a class="brand" href="#">МИХАИЛ БОРИСОВ</a><nav class="nav"><a href="#about">о ведущем</a><a href="#photo">фото</a><a href="#faq">FAQ</a></nav><a class="small link" href="#contacts">связаться <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M2 10 10 2M4 2h6v6"/></svg></a></header><div class="hero"><div class="eyebrow">свадьбы / корпоративы / частные события</div><h1>МИХАИЛ БОРИСОВ</h1><div class="portrait"><svg viewBox="0 280 682 760" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <path id="cut" d="
@@ -395,7 +438,7 @@ M 425 525 Q 451 552 473 584 Q 461 583 446 581 L 417 556 Z
   <h3>Ведущий в Нижнем Новгороде и области</h3>
   <p>Провожу мероприятия в Нижнем Новгороде и выезжаю по области. Среди направлений — Бор, Богородск, Дзержинск, Арзамас, Каменки, Городец, Кстово, Балахна, Чкаловск, Буревестник и Ждановский. Чтобы уточнить свободную дату и условия выезда, <a href="#contacts">свяжитесь со мной</a>.</p>
 </div>
-</section><section id="video" class="section" hidden><div class="sectionhead"><div class="eyebrow">// 02 — видео</div><h2>В работе</h2></div><div class="vidgrid"><article class="vidcard"><button data-video><div class="placeholder">▶<br>Видеоматериал не загружен</div><h3>SHOWREEL</h3></button></article><article class="vidcard"><button data-video><div class="placeholder">▶<br>Видеоматериал не загружен</div><h3>Фрагменты мероприятий</h3></button></article></div></section><section id="photo" class="section"><div class="sectionhead"><div class="eyebrow">// 03 — фото</div><h2>Вне сценария</h2></div><div class="photoGrid">
+</section><section id="video" class="section" hidden><div class="sectionhead"><div class="eyebrow">// 02 — видео</div><h2>В работе</h2></div><div class="vidgrid"><article class="vidcard"><button data-video><div class="placeholder">▶<br>Видеоматериал не загружен</div><h3>SHOWREEL</h3></button></article><article class="vidcard"><button data-video><div class="placeholder">▶<br>Видеоматериал не загружен</div><h3>Фрагменты мероприятий</h3></button></article></div></section><section id="photo" class="section"><div class="sectionhead"><div class="eyebrow">// 03 — фото</div><h2>Вне сценария</h2></div><div class="photoGrid" id="photo-track">
 <img src="assets/photo-73c16e66aa6a.jpg" alt="Миша Борисов выступает с микрофоном на сцене" width="1080" height="1920" loading="lazy" decoding="async">
 <img src="assets/photo-3b06bdc83466.jpg" alt="Миша Борисов в танце на площадке с фиолетовым светом" width="720" height="1280" loading="lazy" decoding="async">
 <img src="assets/photo-fa8ce6693edd.jpg" alt="Миша Борисов с микрофоном и серебряными шарами на празднике" width="1080" height="1920" loading="lazy" decoding="async">
@@ -403,6 +446,12 @@ M 425 525 Q 451 552 473 584 Q 461 583 446 581 L 417 556 Z
 <img src="assets/photo-95d1d9ee8ac1.png" alt="Миша Борисов в тёмных очках под прожектором" width="1365" height="2048" loading="lazy" decoding="async">
 <img src="assets/photo-b30e74858f27.png" alt="Миша Борисов в чёрном костюме на сером студийном фоне" width="1024" height="1536" loading="lazy" decoding="async">
 </div>
+</div>
+<div class="photo-controls" hidden>
+  <button type="button" data-photo-step="-1" aria-controls="photo-track" aria-label="Предыдущее фото">‹</button>
+  <span class="photo-position">1 / 5</span>
+  <button type="button" class="photo-autoplay" aria-controls="photo-track" aria-label="Приостановить автопоказ">пауза</button>
+  <button type="button" data-photo-step="1" aria-controls="photo-track" aria-label="Следующее фото">›</button>
 </div></section><section id="price" class="section"><div class="quiz"><div><div class="eyebrow">// 04 — расчёт</div><h2>Узнайте стоимость<br>и выберите подарок</h2><p>Несколько вопросов о вашем мероприятии.</p><p class="note">Предварительная механика. Заявка в демонстрационном макете не отправляется.</p></div><form class="quizform" id="quiz"><div class="small" id="stepLabel">Шаг 1 из 4</div><div class="track"><i id="progress"></i></div><div class="step active"><h3>Выберите подарок</h3><label class="choice"><input type="radio" name="gift" checked> Один час дискотеки</label><label class="choice"><input type="radio" name="gift"> Короткое видео</label></div><div class="step"><h3>Дата и место</h3><label class="field">Дата мероприятия<input type="date" name="date"></label><label class="field">Город / площадка<input type="text" placeholder="По желанию"></label></div><div class="step"><h3>Сколько будет гостей?</h3><label class="choice"><input type="radio" name="guests"> 10–30</label><label class="choice"><input type="radio" name="guests"> 30–50</label><label class="choice"><input type="radio" name="guests"> 50–100</label><label class="choice"><input type="radio" name="guests"> Более 100</label></div><div class="step"><h3>Как с вами связаться?</h3><label class="field">Имя<input type="text" autocomplete="name"></label><label class="field">Телефон<input type="tel" autocomplete="tel"></label><label class="field">Способ связи<select><option>Телефон</option><option>Telegram</option><option>MAX</option><option>ВКонтакте</option></select></label></div><div class="actions"><button type="button" id="prev" disabled>Назад</button><button type="button" id="next">Далее →</button></div></form></div></section><section id="faq" class="section faq"><div class="sectionhead"><div class="eyebrow">// 05 — FAQ</div><h2>Вопросы<br>и ответы</h2></div><details><summary><span class="small">01</span>Как проходит первая встреча?</summary><p>Знакомимся, обсуждаем ваше мероприятие, пожелания и идеи.</p></details><details><summary><span class="small">02</span>Как формируется программа мероприятия?</summary><p>Программа создаётся индивидуально, с учётом ваших пожеланий и бюджета.</p></details><details><summary><span class="small">03</span>Работаете ли вы с диджеем?</summary><p>Да.</p></details><details><summary><span class="small">04</span>Как забронировать дату?</summary><p>Свяжитесь с менеджером и внесите предоплату.</p></details></section><footer class="footer" id="contacts"><div class="contacts-heading"><div><div class="eyebrow">// 06 — контакты</div><h2>Обсудим<br>событие?</h2></div>
 <button class="preparation-card" type="button" id="preparationCard" aria-expanded="false" aria-controls="preparationPhoto">
   <span class="preparation-card-inner">
@@ -509,4 +558,85 @@ preparationCard.addEventListener('click', () => {
   preparationFront.setAttribute('aria-hidden', String(showPhoto));
   preparationBack.setAttribute('aria-hidden', String(!showPhoto));
 });
+
+const photoTrack = document.querySelector('#photo-track');
+const photoSlides = [...photoTrack.querySelectorAll('img')];
+const photoControls = document.querySelector('.photo-controls');
+const photoPosition = photoControls.querySelector('.photo-position');
+const photoAutoplay = photoControls.querySelector('.photo-autoplay');
+const mobileGallery = matchMedia('(max-width:760px)');
+const galleryReducedMotion = matchMedia('(prefers-reduced-motion:reduce)');
+let photoIndex = 0;
+let photoTimer;
+let photoPaused = galleryReducedMotion.matches;
+let photoVisible = false;
+let photoPointerDown = false;
+
+function schedulePhoto() {
+  clearTimeout(photoTimer);
+  if (mobileGallery.matches && photoVisible && !document.hidden && !photoPaused && !photoPointerDown) {
+    photoTimer = setTimeout(() => showPhoto(photoIndex + 1), 3000);
+  }
+}
+
+function showPhoto(index) {
+  const target = (index + photoSlides.length) % photoSlides.length;
+  const adjacent = Math.abs(target - photoIndex) <= 1;
+  photoTrack.scrollTo({
+    left: photoTrack.clientWidth * target,
+    behavior: adjacent && !galleryReducedMotion.matches ? 'smooth' : 'instant'
+  });
+  schedulePhoto();
+}
+
+function updatePhotoAutoplay() {
+  photoAutoplay.textContent = photoPaused ? 'автопоказ' : 'пауза';
+  photoAutoplay.setAttribute('aria-label', photoPaused ? 'Включить автопоказ' : 'Приостановить автопоказ');
+  schedulePhoto();
+}
+
+function updateGallery() {
+  photoControls.hidden = !mobileGallery.matches;
+  photoTrack.tabIndex = mobileGallery.matches ? 0 : -1;
+  updatePhotoAutoplay();
+}
+
+photoTrack.addEventListener('scroll', () => {
+  if (!mobileGallery.matches) return;
+  photoIndex = Math.min(photoSlides.length - 1, Math.max(0, Math.round(photoTrack.scrollLeft / photoTrack.clientWidth)));
+  photoPosition.textContent = (photoIndex + 1) + ' / ' + photoSlides.length;
+}, {passive:true});
+photoControls.querySelectorAll('[data-photo-step]').forEach(button => {
+  button.addEventListener('click', () => showPhoto(photoIndex + Number(button.dataset.photoStep)));
+});
+photoAutoplay.addEventListener('click', () => {
+  photoPaused = !photoPaused;
+  updatePhotoAutoplay();
+});
+photoTrack.addEventListener('pointerdown', () => {
+  photoPointerDown = true;
+  schedulePhoto();
+}, {passive:true});
+function releasePhotoPointer() {
+  if (!photoPointerDown) return;
+  photoPointerDown = false;
+  schedulePhoto();
+}
+window.addEventListener('pointerup', releasePhotoPointer);
+window.addEventListener('pointercancel', releasePhotoPointer);
+photoTrack.addEventListener('wheel', schedulePhoto, {passive:true});
+mobileGallery.addEventListener('change', updateGallery);
+galleryReducedMotion.addEventListener('change', () => {
+  photoPaused = galleryReducedMotion.matches;
+  updatePhotoAutoplay();
+});
+document.addEventListener('visibilitychange', schedulePhoto);
+new IntersectionObserver(([entry]) => {
+  photoVisible = entry.intersectionRatio >= .35;
+  if (photoVisible && mobileGallery.matches) {
+    photoSlides.forEach(slide => { slide.loading = 'eager'; });
+  }
+  schedulePhoto();
+}, {threshold:.35}).observe(photoTrack);
+updateGallery();
 </script></body></html>
